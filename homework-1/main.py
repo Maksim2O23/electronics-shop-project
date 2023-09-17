@@ -4,15 +4,16 @@ if __name__ == '__main__':
     item1 = Item("Смартфон", 10000, 20)
     item2 = Item("Ноутбук", 20000, 5)
 
-    print(item1.calculate_total_price())  # 200000
-    print(item2.calculate_total_price())  # 100000
+    print(f"{item1.name}: {item1.calculate_total_price()}")  # Смартфон: 200000 (Общая стоимость без скидки)
+    print(f"{item2.name}: {item2.calculate_total_price()}")  # Ноутбук: 100000 (Общая стоимость без скидки)
 
-    # устанавливаем новый уровень цен
-    Item.pay_rate = 0.8
-    # применяем скидку
+    # Устанавливаем новый уровень цен (скидку)
+    Item.set_discount_rate(0.8)
+    # Применяем скидку
     item1.apply_discount()
 
-    print(item1.price)  # 8000.0
-    print(item2.price)  # 20000
+    print(f"{item1.name}: {item1.price}")  # Смартфон: 8000.0 (Цена с учетом скидки)
+    print(f"{item2.name}: {item2.price}")  # Ноутбук: 20000 (Без изменений)
 
-    print(Item.all)  # [<__main__.Item object at 0x000001EC6250C690>, <__main__.Item object at 0x000001EC6250C6D0>]
+    print(Item.all)  # [item1, item2]
+
